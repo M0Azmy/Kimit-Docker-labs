@@ -1,0 +1,29 @@
+
+version: '3.8'
+services :
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "30001:3001"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: assignment_lab
+      DB_USER: user
+      DB_PASSWORD: password
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: assignment_lab
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  db_data:

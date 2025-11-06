@@ -1,0 +1,16 @@
+be ignored, please remove it to avoid potential confusion
+[+] Running 4/3
+ ✔ Network 4-5-multi-container-app_default      Created                                                                                                        0.1s
+ ✔ Volume "4-5-multi-container-app_db_data"     Created                                                                                                        0.0s
+ ✔ Container 4-5-multi-container-app-db-1       Created                                                                                                        0.0s
+ ✔ Container 4-5-multi-container-app-backend-1  Created                                                                                                        0.0s
+Attaching to backend-1, db-1
+db-1       | /usr/local/bin/docker-entrypoint.sh: line 395: exec: init.sql: not found
+db-1 exited with code 127
+backend-1  | Backend server running on port 3001
+backend-1  | Database connection error: Error: getaddrinfo EAI_AGAIN db
+backend-1  |     at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26) {
+backend-1  |   errno: -3001,
+backend-1  |   code: 'EAI_AGAIN',
+backend-1  |   syscall: 'getaddrinfo',
+backend-1  |   hostname: 'db'
